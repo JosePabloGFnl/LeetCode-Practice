@@ -68,7 +68,9 @@ class Solution:
         answer = l1 + l2
 
         # convert into array
-        answer = int_to_linked_list(array)
+        answer = int_to_linked_list(answer)
 
         # reverse once again
         answer = reverse_list(answer)
+
+        return answer
