@@ -1,5 +1,3 @@
-class Solution(object):
-
 """
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
@@ -25,6 +23,7 @@ Output: [0,1]
 :type target: int
 :rtype: List[int]
 """
+class Solution(object):
     def twoSum(self, nums, target):
         
         answer = {}
