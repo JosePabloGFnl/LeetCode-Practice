@@ -8,4 +8,7 @@ class Solution:
 
     def longestPalindrome(self, s: str) -> str:
 
-        
+    if len(s) % 2 == 0:
+        expand_from_center(s, i, i + 1)
+    else:
+        expand_from_center(s, i, i)
