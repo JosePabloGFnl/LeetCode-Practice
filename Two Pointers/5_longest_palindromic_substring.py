@@ -31,15 +31,16 @@ class Solution:
                 right += 1
             return s[left + 1:right]
 
+        if not s:
+            return ""
+
         longest = ""
 
         for i in range(len(s)):
-            if len(s) % 2 == 0:
-                even = expand_from_center(s, i, i + 1)
-                if len(even) > len(longest):
-                        longest = even
-            else:
-                odd = expand_from_center(s, i, i)
-                if len(odd) > len(longest):
-                        longest = odd
-        return longest
+            even = expand_from_center(s, i, i + 1)
+            odd = expand_from_center(s, i, i)
+            
+            cur_longest = even if len(even) > len(odd) else odd
+            longest = cur_longest if len(cur_longest) > len(longest) else longest
+            
+        return longest if longest else s[0]
