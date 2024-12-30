@@ -20,4 +20,15 @@ Output: 21
 """
 class Solution:
     def reverse(self, x: int) -> int:
+
+        result = int(str(abs(x))[::-1]) * (-1 if x < 0 else 1)
+
+        MIN_32BIT = -2**31
+        MAX_32BIT = 2**31 - 1
+        if MIN_32BIT <= result <= MAX_32BIT:
+            result = result
+        else:
+            result = 0
+            
+        return result
         
