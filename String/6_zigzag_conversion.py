@@ -31,22 +31,22 @@ Output: "A"
 """
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        # Creates empty string variables s1 through sN where N is numRows
+        if numRows == 1:
+            return s
+            
         sub_strings = {f'sub_s{i}': '' for i in range(1, numRows + 1)}
         i = 1
         zigzag = 1
         
         for c in s:
             sub_strings[f'sub_s{i}'] = sub_strings[f'sub_s{i}'] + c
-            if i == numRows:
-                zigzag = -1
-            elif i == 1:
-                zigzag = 1
             
-            if zigzag == -1:
-                i = i-1
-            else:
-                i = i+1
+            if zigzag == 1 and i == numRows:
+                zigzag = -1
+            elif zigzag == -1 and i == 1:
+                zigzag = 1
+                
+            i += zigzag
                 
         result = ''.join(sub_strings[f'sub_s{i}'] for i in range(1, numRows + 1))
         return result
