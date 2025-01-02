@@ -87,6 +87,15 @@ class Solution:
         # If first character afet "+" or "-" is 0
         if (s[0]=="-" or s[0]=="+") and s[1]=="0":
             s = s[:1] + s[2:]
+        # Remove from non-digit onwards
+        if s.startswith(('+', '-')) and len(s) > 1:
+            for index, char in enumerate(s[1:], start=1):
+                if not char.isdigit():
+                    return s[:index]
+        else:
+            for index, char in enumerate(s):
+                if not char.isdigit():
+                    return s[:index]
         
         return s
         
