@@ -91,11 +91,13 @@ class Solution:
         if s.startswith(('+', '-')) and len(s) > 1:
             for index, char in enumerate(s[1:], start=1):
                 if not char.isdigit():
-                    return s[:index]
+                    return int(s[:index])
         else:
             for index, char in enumerate(s):
                 if not char.isdigit():
-                    return s[:index]
+                    return int(s[:index])
+        # Convert to int
+        s = int(s)
         
         return s
         
