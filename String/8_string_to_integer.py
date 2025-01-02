@@ -83,7 +83,10 @@ class Solution:
         # Remove leading whitespace
         s = s.lstrip()
         # Check if first character is non-digit
-        s = s if s and (s[0].isdigit() or s[0] in ['-', '+']) else 0
+        s = s if s and (s[0].isdigit() or s[0] in ['-', '+']) else '0'
+        # If first character afet "+" or "-" is 0
+        if (s[0]=="-" or s[0]=="+") and s[1]=="0":
+            s = s[:1] + s[2:]
         
         return s
         
