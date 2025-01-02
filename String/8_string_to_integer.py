@@ -80,4 +80,10 @@ Reading stops at the first non-digit character 'w'.
 """
 class Solution:
     def myAtoi(self, s: str) -> int:
+        # Remove leading whitespace
+        s = s.lstrip()
+        # Check if first character is non-digit
+        s = s if s and (s[0].isdigit() or s[0] in ['-', '+']) else 0
+        
+        return s
         
