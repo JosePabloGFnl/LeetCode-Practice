@@ -99,5 +99,13 @@ class Solution:
         # Convert to int
         s = int(s)
         
+        # 32-Bit
+        MIN_32BIT = -2**31
+        MAX_32BIT = 2**31 - 1
+        if MAX_32BIT < s:
+            s = MAX_32BIT
+        if MIN_32BIT > s:
+            s = MIN_32BIT
+
         return s
         
