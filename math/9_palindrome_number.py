@@ -23,4 +23,9 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 """
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        
+        x = str(x)
+        x_rev = str(x)[::-1]
+        if x_rev == x:
+            return True
+        else:
+            return False
