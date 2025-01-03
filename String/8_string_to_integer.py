@@ -84,8 +84,11 @@ class Solution:
         s = s.lstrip()
         # Check if first character is non-digit
         s = s if s and (s[0].isdigit() or s[0] in ['-', '+']) else '0'
+        if len(s) == 1 and s[0] in ['-', '+']:
+            return 0  # FIX: Return 0 for standalone signs
+        # If invalid sign sequence like "+-" or "-+" is found
         if len(s) > 1 and s[0] in ['-', '+'] and s[1] in ['-', '+']:
-            return 0  # FIX: Return 0 for invalid sign sequences
+            return 0
         # If first character afet "+" or "-" is 0
         if (s[0]=="-" or s[0]=="+") and s[1]=="0":
             s = s[:1] + s[2:]
@@ -110,4 +113,3 @@ class Solution:
             s = MIN_32BIT
 
         return s
-        
