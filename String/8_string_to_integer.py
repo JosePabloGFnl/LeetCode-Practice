@@ -83,24 +83,26 @@ class Solution:
         # Remove leading whitespace
         s = s.lstrip()
         # Check if first character is non-digit
-        s = s if s and (s[0].isdigit() or s[0] in ['-', '+']) else '0'
-        if len(s) == 1 and s[0] in ['-', '+']:
+        if not s:
             return 0  # FIX: Return 0 for standalone signs
-        # If invalid sign sequence like "+-" or "-+" is found
-        if len(s) > 1 and s[0] in ['-', '+'] and s[1] in ['-', '+']:
-            return 0
-        # If first character afet "+" or "-" is 0
-        if (s[0]=="-" or s[0]=="+") and s[1]=="0":
-            s = s[:1] + s[2:]
-        # Remove from non-digit onwards
-        if s.startswith(('+', '-')) and len(s) > 1:
-            for index, char in enumerate(s[1:], start=1):
-                if not char.isdigit():
-                    return int(s[:index])
-        else:
-            for index, char in enumerate(s):
-                if not char.isdigit():
-                    return int(s[:index])
+        # Initialize variables
+        sign = 1
+        result = 0
+        index = 0
+        
+        # Check for optional sign
+        if s[0] in ['-', '+']:
+            sign = -1 if s[0] == '-' else 1
+            index += 1  # Move to the next character
+        
+        # Process numeric digits
+        while index < len(s) and s[index].isdigit():
+            result = result * 10 + int(s[index])
+            index += 1
+        
+        # Apply the sign to the result
+        result *= sign
+        s = result
         # Convert to int
         s = int(s)
         
