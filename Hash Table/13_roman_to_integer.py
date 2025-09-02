@@ -46,6 +46,10 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 class Solution:
     def romanToInt(self, s: str) -> int:
         # Roman Number Dicitonary
+        int_conversion = 0
         rom_dictionary = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        for rom in s:
+            int_conversion += rom_dictionary[rom]
+        
         
         
