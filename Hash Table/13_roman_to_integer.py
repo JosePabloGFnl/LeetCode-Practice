@@ -45,11 +45,25 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 '''
 class Solution:
     def romanToInt(self, s: str) -> int:
-        # Roman Number Dicitonary
         int_conversion = 0
+        # Roman Number dicitonary
         rom_dictionary = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-        for rom in s:
-            int_conversion += rom_dictionary[rom]
         
-        
-        
+        i = 0
+        while i < len(s):
+            # Get current character value
+            current_value = rom_dictionary[s[i]]
+            
+            # Check if there's a next character AND if current < next
+            if i + 1 < len(s) and current_value < rom_dictionary[s[i+1]]:
+                # This is a subtraction case (like IV, IX, XL, etc.)
+                int_conversion += rom_dictionary[s[i+1]] - current_value
+                i += 2
+                pass
+            else:
+                # This is a normal addition case
+                int_conversion += current_value
+                i += 1
+                pass
+                
+        return int_conversion
