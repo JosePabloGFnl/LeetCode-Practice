@@ -67,5 +67,9 @@ class Solution:
 
         # Iterate over numbers in dictionary in reverse
         for rom_sym, int_num in (reversed(list(rom_dictionary.items()))):
-
-            
+            # How many times does int_num fit in num?
+            fit = num // int_num
+            result += (rom_sym * fit)
+            # Use the resting numbers
+            num = num % int_num
+        return result
