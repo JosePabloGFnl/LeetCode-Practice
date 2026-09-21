@@ -38,15 +38,13 @@ Constraints:
 
  
 '''
-
 class Solution:
     def containsDuplicate(self, nums: list[int]) -> bool:
         
-        hash_set = []
-        output = False
+        hash_set = set()
         for n in nums:
             if n in hash_set:
-                output = True
-            hash_set.append(n)
-        return output
+                return True
+            hash_set.add(n)
+        return False
             
