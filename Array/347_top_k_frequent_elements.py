@@ -36,19 +36,20 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 '''
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-            
-        # finding maximum element in array 
-        max_element = max(nums)
 
-        # make hash array of size equal 
-        # to maximum element in array 
-        hash = [0] * (max_element + 1) 
+        # dict of number counts
+        counts = {}
 
         # Counting frequency of each element 
-        # of array and storing it in hash
-        for i in nums:
-            hash[i] += 1
+        for num in nums:
+            counts[num] = counts.get(num, 0) + 1
+        
+        # rank and turn into array
+        counts_ranked = sorted(counts, key=counts.get, reverse=True)
+
+        # first k elements
+        res = counts_ranked[: k] 
                     
-        return hash
+        return res
     
 # This code is contributed by Ryuga
