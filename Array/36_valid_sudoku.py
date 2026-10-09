@@ -51,7 +51,6 @@ Constraints:
 
  
 '''
-
 class Solution:
     def isValidSudoku(self, board: list[list[str]]) -> bool:
         cols = collections.defaultdict(set)
@@ -70,4 +69,4 @@ class Solution:
                 rows[r].add(board[r][c])
                 # dividing the index by 3 of both row and column helps to identify the grid position
                 squares[(r // 3, c //3)].add(board[r][c])
-            return True
+        return True
