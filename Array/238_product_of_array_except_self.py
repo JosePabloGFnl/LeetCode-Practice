@@ -35,6 +35,8 @@ class Solution:
         pre = 1
         post = 1
         res = []
+
+        # prefix logic to multiply by each previous product
         for i in nums:
             if i == 1:
                 res.append(pre*1)
@@ -42,7 +44,9 @@ class Solution:
                 res.append(pre)
                 pre = (pre*i)
 
-        for i in reversed(nums):
+        for i in reversed(range(len(nums))):
+            res[i] = res[i]*post
+            post = (post*nums[i])
             
 
         return res
