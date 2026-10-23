@@ -36,10 +36,11 @@ class Solution:
         longest = 0
         
 
-        for n in nums:
+        for n in numSet:
             # Check if it's the start of a sequence
             if (n - 1) not in numSet:
                 length = 0
+                # starts at the sequence start n and walks right, checking n, n+1, n+2, ... until the next number is missing.
                 while (n + length) in numSet:
                     length += 1
                 longest = max(length, longest)
